@@ -1,0 +1,167 @@
+:root {
+    --clr-primary: rgba(37, 19, 37, 0.808);
+    --clr-light: #f4f4f4;
+    --clr-dark: #333;
+    --clr-warning: rgb(99, 36, 36);
+}
+
+*,
+*::before,
+*::after {
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+.app-title {
+    text-align: center;
+    opacity: .9;
+}
+
+.task-list-title {
+    opacity: .9;
+}
+
+.list-title {
+    font-size: 25px !important;
+    padding: 10px 20px;
+    text-align: left;
+    border-bottom: 2px solid rgba(153, 152, 152, 0.6);
+}
+
+.display-none {
+    display: none;
+}
+
+.parent-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-action-icon {
+    cursor: pointer;
+    margin-bottom: .2rem;
+}
+
+.task-list li {
+    list-style: circle !important;
+    line-height: 1.7;
+    opacity: 0.7;
+    margin-left: 20px;
+    padding-left: 10px;
+    transition: opacity 350ms ease-in-out;
+}
+
+.task-list li:hover,
+.active-list {
+    font-weight: 500;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+[data-list-display-container] {
+    margin-top: 30px !important;
+}
+
+.small-text {
+    font-size: 15px !important;
+}
+
+.expand-task {
+    cursor: pointer;
+    font-size: 1rem !important;
+    font-weight: 100;
+    margin-top: 10px !important;
+    opacity: .7;
+
+    transition: opacity 250ms ease-in-out;
+}
+
+.expand-task:hover {
+    opacity: 1;
+}
+
+.task-action {
+    text-align: right;
+    border-bottom: 1px #ccc dotted;
+}
+
+.task-modal-header {
+    font-size: 2rem;
+}
+
+.hide-task-actions {
+    /* display: none; */
+    opacity: 0;
+    height: 0;
+    transition: all .5s ease-in-out;
+}
+
+.show-task-actions {
+    opacity: 1;
+    padding: .2rem;
+    height: 30px;
+
+}
+
+.task {
+    line-height: 1.1;
+    /* border-bottom: 2px solid rgba(141, 139, 139, 0.3); */
+    padding: 5px 5px;
+}
+
+[type="checkbox"]+span {
+    opacity: 1;
+    text-decoration: none;
+    transition-property: opacity;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+
+}
+
+[type="checkbox"]:checked+span {
+    opacity: .5;
+    text-decoration: line-through !important;
+}
+
+
+.new-task-creator form {
+    padding: 10px 0;
+}
+
+.delete {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 20px;
+    opacity: .7;
+    cursor: pointer;
+
+    transition: opacity 250ms ease-in-out;
+}
+
+.delete>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+.delete-div {
+    margin-top: 0;
+}
+
+.small-icon-space-1 {
+    margin: 0 0.25rem;
+}

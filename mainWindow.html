@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <title>Nuetion Planner</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="container">
+            <h2 class="title app-title">Nuetion Planner</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m5 l5">
+                <div class="all-tasks">
+                    <h3 class="task-list-title">Activity List</h3>
+                    <ul class="task-list" data-list>
+
+                    </ul>
+                    <form action="" data-new-list-form>
+                        <div class="input-field">
+                            <label for="list_name" class="white-text text-darken-2 ">New list name</label>
+                            <input id="list_name" data-new-list-input type="text"
+                                class="validate white-text text-darken-2">
+                        </div>
+                        <div class="input-field">
+                            <button class="btn btn-small list right blue-grey" aria-label="creat new list">Add to
+                                list</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col s12 m7 l7">
+                <div class="container display-none" data-list-display-container>
+                    <div class="card ">
+                        <div class="list-title grey lighten-3 grey-text text-darken-2">
+                            <h5 class="" data-list-title>
+                                Youtube
+                            </h5>
+
+                            <span data-list-count class="badge blue-grey task-count white-text">
+                                3 task remaining
+                            </span>
+                        </div>
+                        <div class="card-content grey-text text-darken-2">
+                            <div class="todo-list">
+                                <div class="todo-body">
+                                    <div class="tasks grey-text text-darken-2" data-tasks>
+
+                                    </div>
+                                    <div class="new-task-creator">
+                                        <form action="" data-new-task-form>
+                                            <div class="input-field">
+                                                <label for="task_name" class="grey-text text-darken-2 ">New task
+                                                    name</label>
+                                                <input id="task_name" data-new-task-input type="text"
+                                                    class="validate grey-text text-darken-2">
+                                                <button class="btn btn-small task right blue-grey"
+                                                    aria-label="creat new list">Add
+                                                    task</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delete-div">
+                        <div>
+                            <span class="delete" data-clear-complete-task-button>Clear completed</span>
+                            <span class="delete" data-delete-list-button>Delete List</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <!-- Task Details Modal -->
+    <div id="modalTaskDetails" class="modal">
+        <div class="modal-content grey-text text-darken-2">
+            <h4 class="task-modal-header" data-modal-task-details-title>Task Details</h4>
+            <p data-modal-task-details-text></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!"
+                class="modal-close waves-effect waves-blue blue-grey blue-lighten-2 white-text btn-small">Close</a>
+        </div>
+    </div>
+
+    <!-- Modify Task Modal -->
+    <div id="modalModifyTask" class="modal">
+        <div class="modal-content grey-text text-darken-2">
+            <h4 class="task-modal-header" data-modal-modify-task-title>Modify Task</h4>
+            <div data-modal-modify-task-text class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="task_name" placeholder="Modify Task Name" type="text" class="validate"
+                                data-modal-modify-name-input>
+                            <label for="task_name">Task Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea" data-modal-modify-description-input
+                                placeholder="Modify Task Description"></textarea>
+                            <label for="textarea1">Task Description</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="submit" value="Modify" class="btn-small teal teal-lighten-2 white-text left"
+                            data-modal-modify-submit-button>
+                        <a href="#!"
+                            class="modal-close waves-effect waves-red blue-grey blue-lighten-3 white-text btn-small right">Close</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <template id="task-template">
+        <div class="task">
+            <p class="parent-task cross-task-name">
+                <label>
+                    <input type="checkbox" class="grey-text text-darken-2" />
+                    <span class="grey-text text-darken-2 task-name" data-task-name></span>
+                </label>
+                <i class="fa fa-ellipsis-h expand-task right" data-expand-task></i>
+            </p>
+            <div class="task-action badge hide-task-actions" data-task-actions>
+                <i class="fa fa-info-circle modal-trigger task-action-icon small-text grey-text small-icon-space-1 modal-trigger"
+                    title="Task Details" data-target="modalTaskDetails" data-task-info-action-icon></i>
+                <i class="fa fa-pen small-text task-action-icon orange-text text-lighten-2  small-icon-space-1 modal-trigger"
+                    title="Modify Task Details" data-target="modalModifyTask" data-task-modify-action-icon></i>
+                <!-- <i class="fa fa-level-down-alt small-text task-action-icon pink-text text-lighten-2  small-icon-space-1 modal-trigger"
+                    title="Manage Sub Task" data-target="modalManageSubTask" data-task-sub-action-icon></i>
+                <i class="fa fa-share-alt small-text task-action-icon green-text text-lighten-2  small-icon-space-1"
+                    title="Add Dependency" data-task-dependency-action-icon></i>
+                <i class="fa fa-id-card-alt small-text task-action-icon purple-text text-lighten-3  small-icon-space-1"
+                    title="Assign Task" data-task-assign-action-icon></i>
+                <i class="fa fa-calendar-plus task-action-icon blue-text text-lighten-1 small-text  small-icon-space-1"
+                    title="Schedule Task" data-task-schedule-action-icon></i>
+                <i class="fa fa-bell small-text task-action-icon teal-text text-lighten-2  small-icon-space-1"
+                    title="Add Notification" data-task-notify-action-icon></i>
+                <i class="fa fa-trash small-text task-action-icon red-text text-lighten-2  small-icon-space-1"
+                    title="Delete Task" data-task-delete-action-icon></i> -->
+            </div>
+        </div>
+    </template>
+
+
+    <script src="./assets/js/materialize.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+</body>
+
+</html>
